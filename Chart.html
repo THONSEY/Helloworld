@@ -1,0 +1,51 @@
+﻿<!doctype html>
+<head>
+	<meta name="viewport" content="width=device-width, initail-scale=1, 	user-scalable=no"/>
+	<link rel="profile" href="https://gmpg.org/xfn/11" />
+	<link rel="stylesheet" href="css/style.css">
+</head>
+	<style>
+		@import url(https://fonts.googleapis.com/css?family=Anomymous+Pro);
+	html{
+	   min-height:100%;
+	  overflow:hidden;
+	}
+	body{
+	    height:calc(100vh-8em);
+	    padding:4em;\
+	color:rgba(255,255,255,0.75);
+	font-family: 'Khmer OS Muol Light';
+	background-color:rgb(200,200,200);
+	}
+	.line-1{
+	      position: relative;
+	      top: 50%;
+	width: 24em;
+	margin:0 auto;
+	border-right: 2px solid rgba(255,255,255,0.75);
+	font-style: 180%;
+	text-align:center;
+	white-space: nowrap;
+	overflow:hidden;
+	transform:translateY(-50%) scale(2);
+	}
+	.anim-typewriter{
+	animation:typewriter 3s steps(30) 1s 1 normal both,blinkTextCursor 500ms steps(44) infinite normal;
+}
+@keyframes typewriter{
+	from{ width:0;}
+to{
+	width:15em;
+}
+}
+@keyframes blinkTextCursor{
+	from{border-right-color:rgba(255,255,255,0.75);
+	}
+to{
+border-right-color:transparent;
+}	
+}
+	</style>
+<body>
+	<p class="line-1 anim-typewriter">សួស្ដីឆ្នាំថ្មី ២០២១</p>
+</body>

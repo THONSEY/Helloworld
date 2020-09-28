@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<style>
+	@font-face {
+		font-family: 'Matrix Code NFI';
+		font-style: normal;
+		font-weight: normal;
+		src: local('Matrix Code NFI'), url('font/matrix_code_nfi.woff') format('woff');
+	}
+	</style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Matrix Master Pro – Free Matrix Code Rain/Digital Rain Animation Generator created with HTML5, CSS3 and JavaScript</title>
+	<meta name="robots" content="index, follow">
+	<meta name="description" content="Matrix Master Pro is a free Matrix code rain/digital rain animation generator created with HTML5, CSS3 and JavaScript.">
+	<meta name="keywords" content="Matrix Code, Code Rain, Digital Rain, Animation, Generator, Matrix Master Pro, Matrix">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta property="og:image" content="https://matrix.logic-wire.de/img/matrix-image.jpg">
+	<meta property="og:image:secure_url" content="https://matrix.logic-wire.de/img/matrix-image.jpg">
+	<style>
+	*,:before,:after{box-sizing:inherit}html,div{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+	
+	html, 
+	body {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+	}
+	
+	body {
+		background: black;
+		color: #4dff4d;
+		font-family: "Lucida Console", Monaco, monospace,"Courier New",Courier;
+		font-weight: normal;
+		font-size: 1.25rem;
+		line-height: 1.5em;
+		text-align: center;
+		position: relative;
+		-webkit-text-size-adjust:100%
+	}
+	
+	a {
+		color: #eee;
+		text-decoration: none;
+	}
+	
+	section {
+		margin: 3em 0;
+	}
+	
+	ul, ol {
+		padding-left: 1em;
+	}
+	
+	button:hover {
+		cursor: pointer;
+	}
+	
+	h1 {
+		font-size: 4rem;
+		letter-spacing: 0.5rem;
+		line-height: 1.25em;
+	}
+	
+	@media screen and (min-width: 60em) {
+		h1 {
+			font-size: 6rem;
+		}
+	}
+	
+	
+	@media screen and (min-width: 80em) {
+		h1 {
+			font-size: 8rem;
+		}
+	}
+	
+	.hidden {
+		opacity: 0;
+		z-index: -1;
+	}
+	
+	#matrix {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+	
+	#wrapper {
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+		overflow: hidden;
+		position: relative;
+	}
+	
+	#menuTrigger {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		bottom: 0;
+		z-index: 4000;
+	}
+	
+	#title {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		-moz-animation: move-title 12s 1; /* Safari 4.0 - 8.0 */
+	  	-webkit-animation: move-title 12s 1; /* Safari 4.0 - 8.0 */
+	  	animation: move-title 12s 1;
+	  	animation-timing-function: linear;
+		animation-delay: 4s;
+	  	padding: 0.25em;
+	  	z-index: 3199;
+	  	
+	  	-webkit-transition: color 1s ease;
+		-moz-transition: color 1s ease;
+		-ms-transition: color 1s ease;
+		-o-transition: color 1s ease;
+		transition: color 1s ease;
+	}
+	
+	.titleSmall {
+		font-size: 1.25rem;
+	}
+	
+	.menu {
+		background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+		position: absolute;
+		width: 100%;
+		color:#eee;
+		font-size: 1.25rem;
+		bottom: 0;
+		display: block;
+		z-index: 5000;
+		
+		-webkit-transition: transform 0.2s ease-in;
+		-moz-transition: transform 0.2s ease-in;
+		-ms-transition: transform 0.2s ease-in;
+		-o-transition: transform 0.2s ease-in;
+		transition: transform 0.2s ease-in;	
+	}
+	
+	.menu.hidden {
+		transform: translateY(100%);
+		opacity: 1;
+		z-index: 4000;
+	}
+	
+	.menuInner {
+		max-width: 50rem;
+		margin: 0 auto;
+		padding: 0 0.125em;
+	}
+	
+	.menuInnerRow {
+		float:left;
+		width: 100%;
+		padding: 0.5em 0;
+	}
+	
+	.menuInnerCol,
+	#menuTracks {
+		padding-top: 0.5em;
+	}
+	
+	.menuInnerCol {
+		float:left;
+		width: 100%;
+	}
+	
+	@media screen and (min-width: 22.5em) {
+		.menuInnerInnerCol {
+			float:left;
+			width: 50%;
+		}
+	}
+	
+	@media screen and (min-width: 40em) {
+		.menuWrapper {
+			float:left;
+			width: 100%;
+			padding-bottom: 2em;			
+		}
+		
+		.menuInnerCol,
+		#menuTracks {
+			padding-top: 0;
+		}
+		
+		.menuInnerCol {
+			width: 33%;
+			padding: 0.25em;
+		}
+		
+		.menuInnerInnerCol {
+			width: 100%;
+		}
+	}
+	
+	.about {
+		background: #000;
+		color: #4dff4d;
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+		overflow: auto;
+		position:absolute;
+		z-index: 6000;
+		text-align: left;
+		-webkit-transition: opacity 1.5s;
+		-moz-transition: opacity 1.5s;
+		-ms-transition: opacity 1.5s;
+		-o-transition: opacity 1.5s;
+		transition: opacity 1.5s;
+	}
+	
+	.aboutInner {
+		padding: 1em 1.5em;
+		max-width: 65rem;
+		margin: 0 auto;
+	}
+	
+	.about.hidden {
+		z-index: 3500;
+	}
+	
+	.return,
+	.footer {
+		margin-top: 3em;
+		text-align: center;
+	}
+	
+	.messageBox {
+		background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		color:#eee;
+		font-size: 1.25rem;
+		z-index: 3150;
+		
+		-webkit-transition: opacity 3s;
+		-moz-transition: opacity 3s;
+		-ms-transition: opacity 3s;
+		-o-transition: opacity 3s;
+		transition: opacity 3s;
+		
+		 display: flex;
+		 align-items: center;
+		 justify-content: center;
+	}
+	
+	@media screen and (min-width: 60em) {
+		.messageBox {
+			font-size: 1.3rem;
+		}
+	}
+	
+	.messageBox.hidden {
+		z-index: 3150;
+	}
+	
+	.messageBoxInner {
+		max-width: 65rem;
+		padding: 0 1.5em;
+		margin: 0 auto;
+		mix-blend-mode: hard-light;
+	}
+	
+	.button {
+		font-size: 1.5rem;
+		font-weight: bold;
+		display: inline-block;
+		
+		background: #333;
+		color: #eee;
+		
+		border: 2px solid transparent;
+		border-radius: 0.125em;
+		margin: 0.25em -0.0625em;
+		width: 2.125em;
+		height: 2.125em;
+		line-height: 2.125em;
+		text-align: center;
+	}
+	
+	.buttonMusic {
+		background: #eee;
+		color: #222;
+	}
+	
+	.buttonActive {
+		background: #111;
+		color: #fff;
+		border: 2px inset #666;
+	}
+	
+	.buttonMusic.buttonActive {
+		color: #fff;
+	}
+	
+	.buttonActive.buttonPaused {
+	  	color: #999;
+	}
+	
+	.buttonAuto {
+		font-size: 1em;
+		width: auto;
+		height: auto;
+		padding: 0.125em 0.75em;
+	}
+	
+	span.menuButtonRow {
+		display: block;
+	}
+	
+	#music {
+		position: absolute;
+		top: -5em;
+		z-index: -2;
+	}
+	
+	@-moz-keyframes move-title {
+		from {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	    to { 
+			transform: translateY(100%);
+			opacity: 0;
+		}
+	}
+	
+	@-webkit-keyframes move-title {
+		from {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	    to { 
+			transform: translateY(100%);
+			opacity: 0;
+		}
+	}
+	
+	@keyframes move-title {
+		from {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	    to { 
+			transform: translateY(100%);
+			opacity: 0;
+		}
+	}
+	</style>
+	<link rel="manifest" href="manifest.webmanifest">
+	<link rel="icon" type="image/png" href="favicon32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="favicon96x96.png" sizes="96x96">
+	<link rel="apple-touch-icon" href="favicon180x180.png" sizes="180x180">
+</head>
+<body>
+	<canvas id="matrix"></canvas>
+	
+	<div id="wrapper">
+		<div id="title">
+			<h1>MATRIX MASTER<br>PRO</h1>
+			<div class="titleSmall">
+				<p>Matrix Code Rain Animation Generator</p>
+			</div>
+		</div>
+		
+		<div id="about" class="about hidden">
+			<div class="aboutInner">
+				<a id="aboutInnerTop"></a>
+				<section>
+					<h2>About MATRIX MASTER PRO</h2>
+			
+					<p>Matrix Master Pro is a free Matrix code rain/digital rain animation generator created with HTML5, CSS3 and JavaScript. It is designed as a independent research and art project with the purpose to explore the possibilities of modern web technologies.</p>
+				</section>
+				
+				<section>
+					<h3>Team</h3>
+					<p>Matrix Master Pro is being developed by <a target="_blank" href="https://logic-wire.de/">logic-wire websolutions</a> together with dedicated volunteers. Special thanks go to Master&nbsp;B, Jaculus Jaculus and Incredible&nbsp;D.</p>
+				</section>
+				
+				<section>
+					<h3>Credits</h3>
+					
+					<h4>Matrix Code NFI font</h4>
+					<p><a target="_blank" href="http://www.norfok.com">Norfok® Incredible Font Design</a></p>
+					
+					<h4>Music</h4>
+					
+					<ul>
+					<li>Track A/B/C: <a target="_blank" href="https://www.fesliyanstudios.com">Royalty free music from FesliyanStudios</a></li>
+					<li>Track D/E/F: <a target="_blank" href="http://www.nihilore.com/">Nihilore Royalty Free Music</a></li>
+					</ul>
+					
+					<h4>Quotation</h4>
+					<p>Quotations are from the movie <a target="_blank" href="https://www.warnerbros.com/movies/matrix/">The Matrix</a>.</p>
+				</section>
+				
+				<section>
+					<h3>Version</h3>
+					<p>0.3.6</p>
+					<p><a target="_blank" href="changelog.txt">changelog.txt</a></p>
+				</section>
+				
+				<section>
+					<h3>Contact</h3>
+					<p><a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x6d;&#x61;&#x74;&#x72;&#x69;&#x78;&#x40;&#x6c;&#x6f;&#x67;&#x69;&#x63;&#x2d;&#x77;&#x69;&#x72;&#x65;&#x2e;&#x64;&#x65;">
+&#x6d;&#x61;&#x74;&#x72;&#x69;&#x78;&#x40;&#x6c;&#x6f;&#x67;&#x69;&#x63;&#x2d;&#x77;&#x69;&#x72;&#x65;&#x2e;&#x64;&#x65;</a></p>
+				</section>
+				
+				<section>
+					<h3>Follow us</h3>
+					<p>
+						<a class="button buttonAuto" target="_blank" title="YouTube" href="https://www.youtube.com/channel/UCtvMf1agN3lRZ5QTkm2mFdw">YouTube</a>
+						<a class="button buttonAuto" target="_blank" title="Twitter" href="https://twitter.com/MatrixMasterPro">Twitter</a>
+						<a class="button buttonAuto" target="_blank" title="Facebook" href="https://www.facebook.com/matrix.master.pro/">Facebook</a>
+					</p>
+				</section>
+				
+				<section>
+					<h3>Donate</h3>
+				
+					<p>If you like Matrix Master Pro you may want to support the project by <a style="white-space: nowrap;" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H5GJFVRCCC24G&source=url">making a donation</a>.</p>
+				</section>
+				
+				<p class="return"><button class="button" id="buttonAboutReturn" title="Return to the Matrix">&lArr;</button></p>
+				
+				<p class="footer"><a target="_blank" href="https://logic-wire.de/#kontakt">Legals&nbsp;(Impressum)</a><br><a target="_blank" href="https://logic-wire.de/datenschutz">Data&nbsp;Protection</a></p>
+			</div>
+		</div>
+		
+		<div id="menuTrigger"></div>
+		
+		<div id="messageBox" class="messageBox hidden"><p id="messageBoxInner" class="messageBoxInner"></p></div>
+		
+		<div id="menu" class="menu hidden">
+			<div id="menuInner" class="menuInner">
+				<div class="menuWrapper">
+					<div class="menuInnerRow">
+						<div class="menuInnerCol">
+							<span class="menuButtonRow menuButtonControls">
+								<button class="button" id="buttonReload" title="Reload Matrix">&#8635;</button>
+								<button class="button buttonActive" id="buttonToggleQuotes" title="Enable/Disable Quotes">Q</button>
+								<button class="button" id="buttonToggleAbout" title="About Matrix Master Pro">?</button>
+								<button class="button" id="buttonToggleFullscreen" title="Toggle Full Screen">&#x2752;</button>
+							</span>
+							
+							<span id="menuTracks" class="menuButtonRow"></span>
+						</div>
+						
+						<div class="menuInnerCol">
+							<div class="menuInnerInnerCol">
+								<span class="menuButtonRow">
+									<button class="button buttonSpeed" data-factor="0.5" title="Slow">&#8594;</button>
+									<button class="button buttonSpeed buttonActive" data-factor="1" title="Normal">&#8658;</button>
+									<button class="button buttonSpeed" data-factor="2" title="Fast">&#8667;</button>
+								</span>
+								
+								<span class="menuButtonRow">
+									<button class="button buttonZoom" data-factor="0.7" title="Zoom Out">-</button>
+									<button class="button buttonZoom buttonActive" data-factor="1" title="Reset Zoom">0</button>
+									<button class="button buttonZoom" data-factor="1.2" title="Zoom In">+</button>
+								</span>
+							</div>
+							
+							<div class="menuInnerInnerCol">
+								<span class="menuButtonRow">
+									<button class="button buttonWave" data-wave="waveY" title="Waves X-Axis">&#8764;</button>
+									<button class="button buttonDirectionY" data-direction="up" title="Up">&#8593;</button>
+									<button class="button buttonWave" data-wave="waveX" title="Waves Y-Axis">&#8768;</button><br>
+									<button class="button buttonDirectionX" data-direction="left" title="Left">&#8592;</button>
+									<button class="button buttonActive buttonDirectionY" data-direction="down" title="Down">&#8595;</button>
+									<button class="button buttonDirectionX" data-direction="right" title="Right">&#8594;</button>
+								</span>
+							</div>
+						</div>
+						
+						<div class="menuInnerCol">
+							<div id="menuColors"></div>
+						</div>		
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<audio id="music">
+			<source id="musicSource" src="music/New_Heights_-_David_Fesliyan.mp3" type="audio/mpeg">
+		</audio>
+	</div>
+	
+	<script>
+		function Font() {
+			var _f = this;
+			
+			_f.family = 'Matrix Code NFI';
+		
+			_f.size = 30;
+			_f.sizeDefault = 30;
+			
+			_f.sizeVariable = function () {
+				return Math.floor(((Math.random() * 0.7) + 0.5) * _f.size);
+			}
+			
+			_f.setZoom = function (factor) {
+				_f.size = Math.floor(factor * _f.sizeDefault);
+			};
+		}
+		
+		function UserInterface() {
+			var _ui = this;
+			
+			_ui.elements = {
+				wrapper: document.getElementById('wrapper'),
+				menu: document.getElementById('menu'),
+				menuTrigger: document.getElementById('menuTrigger'),
+				menuColors: document.getElementById('menuColors'),
+				menuTracks: document.getElementById('menuTracks'),
+				about: document.getElementById('about'),
+				aboutInnerTop: document.getElementById('aboutInnerTop'),
+				messageBox: document.getElementById('messageBox'),
+				button: {
+					color: [],
+					music: [],
+					zoom: document.getElementsByClassName('buttonZoom'),
+					speed: document.getElementsByClassName('buttonSpeed'),
+					directionX: document.getElementsByClassName('buttonDirectionX'),
+					directionY: document.getElementsByClassName('buttonDirectionY'),
+					wave: document.getElementsByClassName('buttonWave'),
+					fullscreen: document.getElementById('buttonToggleFullscreen')
+				}
+			};
+			
+			_ui.show = {
+				message: function (messageText) {
+					_ui.elements.messageBox.firstChild.innerHTML = messageText;
+					_ui.elements.messageBox.classList.remove('hidden');
+				}
+			};
+			
+			_ui.close = {
+				message: function () {
+					_ui.elements.messageBox.classList.add('hidden');
+				},
+				menu: function () {
+					_ui.elements.menu.classList.add('hidden');
+				}
+			};
+			
+			_ui.toggle = {
+				menu: function () {
+					_ui.elements.menu.classList.toggle('hidden');
+				},
+				about: function () {
+					if (_ui.elements.about.classList.toggle('hidden')) {
+						setTimeout(function() {
+							_ui.elements.aboutInnerTop.scrollIntoView();
+						}, 1500);
+					}
+				},
+				fullscreen: function () {
+					_ui.elements.button.fullscreen.classList.toggle('buttonActive');
+				
+				    var elem = document.documentElement;
+				    if (!document.fullscreenElement && !document.mozFullScreenElement &&
+				        !document.webkitFullscreenElement && !document.msFullscreenElement) {
+				        if (elem.requestFullscreen) {
+				            elem.requestFullscreen();
+				        } else if (elem.msRequestFullscreen) {
+				            elem.msRequestFullscreen();
+				        } else if (elem.mozRequestFullScreen) {
+				            elem.mozRequestFullScreen();
+				        } else if (elem.webkitRequestFullscreen) {
+				            elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+				        }
+				    } else {
+				        if (document.exitFullscreen) {
+				            document.exitFullscreen();
+				        } else if (document.msExitFullscreen) {
+				            document.msExitFullscreen();
+				        } else if (document.mozCancelFullScreen) {
+				            document.mozCancelFullScreen();
+				        } else if (document.webkitExitFullscreen) {
+				            document.webkitExitFullscreen();
+				        }
+				    }
+				},
+				quotes: function (element) {
+					if (!element.classList.toggle('buttonActive')) {
+						_ui.close.message();
+					}
+				},
+				button: {
+					music: function (element) {
+						for (var i = 0; i < _ui.elements.button.music.length; i++) {
+							if (element != _ui.elements.button.music[i]) {
+								_ui.elements.button.music[i].classList.remove('buttonActive', 'buttonPaused');
+							}
+						}
+						
+						if (element.classList.contains('buttonActive')) {
+							element.classList.toggle('buttonPaused');
+						} else {
+							element.classList.add('buttonActive');
+						}
+					},
+					generic: function(element) {
+						element.classList.toggle('buttonActive');
+					}
+				}
+			};
+			
+			_ui.activate = {
+				button: function (element, group) {
+					for (var i = 0; i < _ui.elements.button[group].length; i++) {
+						_ui.elements.button[group][i].classList.remove('buttonActive');
+					}
+				
+					element.classList.add('buttonActive');
+				}
+			}
+		}
+		
+		function Direction() {
+			var _d = this;
+			
+			_d.currentX = 'none';
+			_d.currentY = 'down';
+		
+			_d.directionX = {
+				left: -1,
+				right: 1,
+				none: 0
+			};
+			
+			_d.directionY = {
+				down: 1,
+				up: -1,
+				none: 0
+			};
+			
+			_d.setX = function (direction) {
+				if (_d.directionX.hasOwnProperty(direction)) {
+					_d.currentX = direction;
+				}
+			};
+			
+			_d.setY = function (direction) {
+				if (_d.directionY.hasOwnProperty(direction)) {
+					_d.currentY = direction;
+				}
+			};
+		}
+		
+		function Color() {
+			_c = this;
+			
+			_c.default = '#00FF00';
+			_c.current = '#00FF00';
+			
+			_c.palette = {
+				lime: '#00FF00',
+				olive: '#999900',
+				mediumseagreen: '#3CB371',
+				red: '#FF1A1A',
+				deeppink: '#FF1493',
+				fuchsia: '#FF00FF',
+				orange: '#FFA500',
+				yellow: '#FFFF00',
+				blue: '#3333FF',
+				dodgerblue: '#1E90FF',
+				aqua: '#00FFFF',
+				whitesmoke: '#F5F5F5'
+			};
+			
+			_c.set = function (color) {
+				if (_c.palette.hasOwnProperty(color)) {
+					_c.current = _c.palette[color];
+				}
+			};
+		}
+		
+		function Music() {
+			var _music = this;
+			
+			_music.player = document.getElementById('music');
+			_music.playerSource = document.getElementById('musicSource');
+			
+			_music.track = {
+				A: {
+					author: 'David Fesliyan',
+					title: 'New Heights',
+					source: 'music/New_Heights_-_David_Fesliyan.mp3'
+				},
+				B: {
+					author: 'David Fesliyan',
+					title: 'Journey To The Promise',
+					source: 'music/Journey_To_The_Promise_-_David_Fesliyan.mp3'
+				},
+				C: {
+					author: 'David Fesliyan',
+					title: 'Super Hero Showdown',
+					source: 'music/Super_Hero_Showdown_-_David_Fesliyan.mp3'
+				},
+				D: {
+					author: 'Nihilore',
+					title: 'Eigengrau',
+					source: 'music/Eigengrau.mp3'
+				},
+				E: {
+					author: 'Nihilore',
+					title: 'In The Belly Of The Whale',
+					source: 'music/In_the_Belly_of_the_Whale.mp3'
+				},
+				F: {
+					author: 'Nihilore',
+					title: 'The Water And The Well',
+					source: 'music/The_Water_and_the_Well.mp3'
+				}
+			};
+			
+			_music.set = function (track) {
+				if (_music.track.hasOwnProperty(track)) {
+					if (_music.playerSource.getAttribute('src') == _music.track[track].source) {
+						if (_music.player.paused) {
+							_music.player.play();
+						} else {
+							_music.player.pause();
+						}
+					} else {
+						_music.playerSource.setAttribute('src', _music.track[track].source);
+						
+						_music.player.load();
+						_music.player.play();
+					}
+				}
+			}
+		}
+		
+		function Wave() {
+			var _w = this;
+			
+			_w.direction = {
+				waveX : false,
+				waveY: false
+			}
+			
+			_w.generate = function (waveSeed, fontSize) {
+				return Math.floor(fontSize * Math.sin(waveSeed/fontSize));
+			}
+			
+			_w.toggle = function (wave) {
+				if (_w.direction.hasOwnProperty(wave)) {
+					_w.direction[wave] = !_w.direction[wave];
+				}
+			}
+		}
+		
+		function Ticker(interval, duration = 0, delay = 0) {
+			var _t = this;
+			
+			_t.last = false;
+			
+			_t.interval = interval;
+			_t.intervalDefault = interval;
+			
+			_t.duration = duration;
+			_t.delay = delay;
+			
+			_t.setSpeed = function (factor) {
+				_t.interval = Math.floor(1/factor * _t.intervalDefault);
+			}
+		}
+		
+		function Message(interval, duration) {
+			var _message = this;
+			
+			_message.enabled = true;
+			_message.index = 0;
+			
+			_message.ticker = new Ticker(interval, duration);
+			
+			_message.pool = [
+				'Follow the white rabbit.',
+				'I’m trying to free your mind, Neo. But I can only show you the door. You’re the one that has to walk through it.',
+				'This your last chance. After this there is no turning back. You take the blue pill, the story ends. You wake up in your bed and believe whatever you want to. You take the red pill, you stay in Wonderland, and I show you how deep the rabbit hole goes. Remember, all I\'m offering is the truth. Nothing more.',
+				'Have you ever had a dream, Neo, that you were so sure was real? What if you were unable to wake from that dream, Neo? How would you know the difference between the dream world and the real world?',
+				'The Matrix is the world that has been pulled over your eyes to blind you from the truth.',
+				'What you know you can’t explain, but you feel it. You’ve felt it your entire life, that there’s something wrong with the world. You don’t know what it is, but it’s there, like a splinter in your mind, driving you mad.',
+				'Unfortunately, no one can be told what the Matrix is. You have to see it for yourself.',
+				'The Matrix is a system, Neo. That system is our enemy. But when you’re inside, you look around, what do you see? Businessmen, teachers, lawyers, carpenters. The very minds of the people we are trying to save. But until we do, these people are still a part of that system and that makes them our enemy. You have to understand, most of these people are not ready to be unplugged. And many of them are so inert, so hopelessly dependent on the system that they will fight to protect it..',
+				' I don\'t like the idea that I\'m not in control of my life.',
+				'Throughout human history, we have been dependent on machines to survive. Fate, it seems, is not without a sense of irony.',
+				'What are you waiting for? You\'re faster than this. Don\'t think you are, know you are. Come on. Stop trying to hit me and hit me.',
+				'If real is what you can feel, smell, taste and see, then \'real\' is simply electrical signals interpreted by your brain.',
+				'You have to let it all go, Neo. Fear, doubt, and disbelief, Free your mind.',
+				'There is a difference between knowing the path and walking the path.',
+				'To deny our impulses is to deny the very thing that makes us human.',
+				'As long as the Matrix exists, the human race will never be free.'
+			];
+		}
+		
+		function Matrix(matrixId) {
+			var _m = this;
+			
+			_m.m = [];
+			
+			_m.chars = '!"#$%&\'()*+,-./:;<=>?[\\]^_{|}~ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.split('');
+			
+			_m.density = 1.2;
+			
+			_m.canvas = document.getElementById(matrixId);
+			_m.context = _m.canvas.getContext('2d');
+			
+			_m.canvas.width = window.innerWidth;
+			_m.canvas.height = window.innerHeight;
+			
+			_m.font = new Font();
+			_m.ui = new UserInterface();
+			_m.direction = new Direction();
+			_m.color = new Color();
+			_m.music = new Music();
+			_m.wave = new Wave();
+			_m.ticker = new Ticker(40, 0, 14500);
+			_m.message = new Message(120000, 40000);
+			
+			_m.numCols = Math.floor(_m.density * _m.canvas.width/_m.font.size);
+			_m.numRows = Math.floor(_m.density * _m.canvas.height/_m.font.size);
+			
+			_m.randomInt = function (max) {
+				return Math.floor(Math.random() * max);
+			}
+			
+			_m.randomChar = function () {
+				return _m.chars[_m.randomInt(_m.chars.length)];
+			}
+			
+			_m.createChar = function (offset = 0) {
+				var fontSize = _m.font.sizeVariable();
+				var posX = posY = stopX = stopY = 0;
+				
+				if (_m.direction.currentY == 'none') {
+					posY = _m.randomInt(_m.canvas.height);
+				} else if (_m.direction.currentY == 'down') {
+					posY = -fontSize - offset;
+					
+					stopY = Math.floor(_m.randomInt(1.2 * _m.canvas.height));
+					
+					if (stopY > _m.canvas.height) {
+						stopY = _m.canvas.height;
+					}
+					
+					stopY += fontSize;
+				} else  if (_m.direction.currentY == 'up') {
+					posY = _m.canvas.height + fontSize + offset;
+					
+					stopY = _m.canvas.height - Math.floor(_m.randomInt(1.2 * _m.canvas.height));
+					
+					if (stopY < 0) {
+						stopY = 0;
+					}
+					
+					stopY -= fontSize;
+				}
+				
+				if (_m.direction.currentX == 'none') {
+					posX = _m.randomInt(_m.canvas.width);
+				} else  if (_m.direction.currentX == 'right') {
+					if (_m.direction.currentY != 'none') {
+						posX = _m.randomInt(_m.canvas.width) - _m.randomInt(_m.canvas.width)/2;
+						posY = _m.randomInt(_m.canvas.height);
+						
+						if (_m.direction.currentY == 'down') {
+							posY -= fontSize;
+						} else {
+							posY += fontSize;
+						}
+					} else {
+						posX = -fontSize - offset;	
+					}
+				
+					stopX = Math.floor(_m.randomInt(1.2 * _m.canvas.width));
+				
+					if (stopX > _m.canvas.width) {
+						stopX = _m.canvas.width;
+					}
+				} else  if (_m.direction.currentX == 'left') {
+					if (_m.direction.currentY != 'none') {
+						posX = _m.randomInt(_m.canvas.width) + _m.randomInt(_m.canvas.width)/2;
+						posY = _m.randomInt(_m.canvas.height);
+						
+						if (_m.direction.currentY == 'down') {
+							posY -= fontSize;
+						} else {
+							posY += fontSize;
+						}
+					} else {
+						posX = _m.canvas.width + fontSize + offset;	
+					}
+				
+					stopX = _m.randomInt(_m.canvas.width) - Math.floor(_m.randomInt(1.2 * _m.canvas.width));
+					
+					if (stopX < -fontSize) {
+						stopX = -fontSize;
+					}
+				}
+				
+				return {
+					posX: posX,
+					posY: posY,
+					stopX: stopX,
+					stopY: stopY,
+					fontSize: fontSize,
+					prev: {
+						posX: 0,
+						posY: 0,
+						char: ''
+					}
+				};
+			}
+			
+			_m.init = function () {
+				_m.m = [];
+				
+				for (var i=0; i<_m.numCols; i++) {
+	        		_m.m.push(_m.createChar(2 * _m.randomInt(_m.canvas.height)));
+	        	}
+				
+				window.requestAnimationFrame(_m.draw);
+			}
+			
+			_m.resize = function () {
+				_m.canvas.width = window.innerWidth;
+				_m.canvas.height = window.innerHeight;
+				
+				_m.numCols = Math.floor(_m.density * _m.canvas.width/_m.font.size);
+				_m.numRows = Math.floor(_m.density * _m.canvas.height/_m.font.size);
+				
+				_m.init();
+			}
+			
+			_m.clearScreen = function () {
+				_m.context.clearRect(0, 0, _m.canvas.width, _m.canvas.height); // clear canvas
+			}
+			
+			_m.drawCharPrev = function(currentChar) {
+				_m.context.font = currentChar.fontSize + 'px ' + _m.font.family;
+				_m.context.fillStyle = _m.color.current;
+				_m.context.globalCompositeOperation = 'hard-light';
+				_m.context.fillText(currentChar.prev.char, currentChar.prev.posX, currentChar.prev.posY);
+			}
+			
+			_m.drawChar = function (currentChar) {
+				var char = _m.randomChar();
+				
+				_m.context.globalCompositeOperation = 'source-atop';
+				_m.context.fillStyle = 'rgba(0, 0, 0, 0.5)';
+				_m.context.fillRect(currentChar.posX - Math.floor(0.25 * currentChar.fontSize), currentChar.posY - Math.floor(0.8 * currentChar.fontSize), currentChar.fontSize, currentChar.fontSize);
+				
+				_m.drawCharPrev(currentChar);
+				
+				_m.context.font = currentChar.fontSize + 'px ' + _m.font.family;				
+				_m.context.globalCompositeOperation = "source-over";
+				_m.context.fillStyle = 'white';
+				_m.context.fillText(char, currentChar.posX, currentChar.posY);
+				
+				return char;
+			}
+			
+			_m.draw = function (now) {
+				if (now > _m.ticker.delay) {
+					if (!_m.ticker.last || now >= _m.ticker.last + _m.ticker.interval) {
+						_m.ticker.last = now;
+							
+						_m.context.fillStyle = "rgba(0, 0, 0, 0.09)";
+		        		_m.context.fillRect(0, 0, _m.canvas.width, _m.canvas.height);
+						
+						for (var c=0; c<_m.m.length; c++) {
+							var waveX = 0;
+							var waveY = 0;
+							var createChar = true;
+							
+							if (_m.wave.direction.waveX) {
+								if (_m.direction.currentY == 'down' || _m.direction.currentY == 'up') {
+									var waveSeedX = _m.m[c].posY;
+								} else {
+									var waveSeedX = now;
+								}
+								
+								waveX = _m.wave.generate(waveSeedX, _m.m[c].fontSize);
+							}
+							
+							if (_m.wave.direction.waveY) {
+								if (_m.direction.currentY == 'down' || _m.direction.currentY == 'up') {
+									var waveSeedY = now;
+								} else {
+									var waveSeedY = _m.m[c].posX;
+								}
+								
+								waveY = _m.wave.generate(waveSeedY, _m.m[c].fontSize);
+							}
+							
+							_m.m[c].posX += _m.direction.directionX[_m.direction.currentX] * _m.m[c].fontSize + waveX;
+							_m.m[c].posY += _m.direction.directionY[_m.direction.currentY] * _m.m[c].fontSize + waveY;
+							
+							if (_m.direction.currentY == 'down') {
+								if (_m.m[c].posY < _m.m[c].stopY) {
+									if (_m.m[c].posY >= 0) {
+										_m.m[c].prev.char = _m.drawChar(_m.m[c]);
+									}
+									
+									createChar = false;
+								}
+							} else if (_m.direction.currentY == 'up') {
+								if (_m.m[c].posY > _m.m[c].stopY) {
+									if (_m.m[c].posY <= _m.canvas.height) {
+										_m.m[c].prev.char = _m.drawChar(_m.m[c]);
+									}
+									
+									createChar = false;
+								}
+							} else if (_m.direction.currentX == 'right') {
+								if (_m.m[c].posX < _m.m[c].stopX) {
+									if (_m.m[c].posX >= -_m.m[c].fontSize) {
+										_m.m[c].prev.char = _m.drawChar(_m.m[c]);
+									}
+									
+									createChar = false;
+								}
+							} else if (_m.direction.currentX == 'left') {
+								if (_m.m[c].posX > _m.m[c].stopX) {
+									if (_m.m[c].posX <= _m.canvas.width) {
+										_m.m[c].prev.char = _m.drawChar(_m.m[c]);
+									}
+									
+									createChar = false;
+								}
+							}
+							
+							if (createChar) {
+								_m.drawCharPrev(_m.m[c]);
+								
+								_m.m[c] = _m.createChar();
+							} else {
+								_m.m[c].prev.posX = _m.m[c].posX;
+								_m.m[c].prev.posY = _m.m[c].posY;
+							}
+						}
+					}
+					
+					if (_m.message.enabled) {
+						if ((!_m.message.ticker.last && now > _m.message.ticker.interval) || now >= _m.message.ticker.last + _m.message.ticker.interval) {
+							_m.message.ticker.last = now;
+						
+							_m.ui.show.message(_m.message.pool[_m.message.index]);
+							
+							_m.message.index++;
+							
+							if (_m.message.index >= _m.message.pool.length) {
+			    				_m.message.index = 0;
+			    			}
+						}
+						
+						if (now >= _m.message.ticker.last + _m.message.ticker.duration) {
+							_m.ui.close.message();
+						}
+					}
+				}
+				
+				window.requestAnimationFrame(_m.draw);
+			}
+			
+			/* Main */
+			
+			//remove title after intro animation ends
+			var title = document.getElementById('title');
+			title.addEventListener('webkitAnimationEnd', function() { this.outerHTML = ''; });	// Code for Chrome, Safari and Opera
+			title.addEventListener('animationend', function() { this.outerHTML = ''; }); // Standard syntax
+			
+			//setup menu trigger
+			_m.ui.elements.menu.addEventListener('click', _m.ui.close.menu);
+			_m.ui.elements.menuTrigger.addEventListener('click', _m.ui.toggle.menu);
+			
+			//setup menu control buttons
+			document.getElementById("buttonReload").addEventListener('click', function () {
+				window.location.reload(false);
+			});
+			document.getElementById("buttonToggleAbout").addEventListener('click', _m.ui.toggle.about);
+			document.getElementById("buttonAboutReturn").addEventListener('click', _m.ui.toggle.about);			
+			_m.ui.elements.button.fullscreen.addEventListener('click', _m.ui.toggle.fullscreen);
+			document.getElementById("buttonToggleQuotes").addEventListener('click', function(evt) {
+				evt.stopPropagation();
+				
+				_m.message.enabled = !_m.message.enabled;
+				
+				_m.ui.toggle.quotes(this);
+			});
+			
+			//setup menu color buttons
+			for (var color in _m.color.palette) {
+				var button = document.createElement('button');
+				
+				button.appendChild(document.createTextNode('\u00A0'));
+				
+				button.classList.add('button', 'buttonColor');
+				
+				if (_m.color.current == _m.color.palette[color]) {
+					button.classList.add('buttonActive');
+				}
+				
+				button.style.backgroundColor = _m.color.palette[color];
+				button.setAttribute('data-color', color);
+				
+				button.addEventListener('click', function (evt) {
+					evt.stopPropagation();
+					
+					_m.clearScreen();
+  					
+  					_m.color.set(this.getAttribute('data-color'));
+  					
+  					_m.ui.elements.wrapper.style.color = _m.color.current;
+  					
+  					_m.ui.activate.button(this, 'color');
+  				});
+				
+				_m.ui.elements.menuColors.appendChild(button);
+				_m.ui.elements.menuColors.appendChild(document.createTextNode(' '));
+				
+				_m.ui.elements.button.color.push(button);
+			}
+			
+			//setup music buttons
+			for (var track in _m.music.track) {
+				var button = document.createElement('button');
+				
+				button.appendChild(document.createTextNode(track));
+				
+				button.classList.add('button', 'buttonMusic');
+				
+				button.setAttribute('data-track', track);
+				button.setAttribute('title', _m.music.track[track].author + ' – ' + _m.music.track[track].title);
+				
+				button.addEventListener('click', function (evt) {
+					evt.stopPropagation();
+  					
+  					_m.music.set(this.getAttribute('data-track'));
+  					
+  					_m.ui.toggle.button.music(this);
+  				});
+				
+				_m.ui.elements.menuTracks.appendChild(button);
+				_m.ui.elements.menuTracks.appendChild(document.createTextNode(' '));
+				
+				_m.ui.elements.button.music.push(button);
+			}
+			
+			//setup speed buttons
+			for (var i = 0; i < _m.ui.elements.button.speed.length; i++) {
+				_m.ui.elements.button.speed[i].addEventListener('click', function (evt) {
+					evt.stopPropagation();
+					
+					_m.ticker.setSpeed(this.getAttribute('data-factor'));
+					
+					_m.ui.activate.button(this, 'speed');
+				});
+			}
+			
+			//setup zoom buttons
+			for (var i = 0; i < _m.ui.elements.button.zoom.length; i++) {
+				_m.ui.elements.button.zoom[i].addEventListener('click', function (evt) {
+					evt.stopPropagation();
+					
+					_m.font.setZoom(this.getAttribute('data-factor'));
+					
+					_m.ui.activate.button(this, 'zoom');
+					
+					_m.resize();
+				});
+			}
+			
+			//setup direction buttons
+			for (var i = 0; i < _m.ui.elements.button.directionX.length; i++) {
+				_m.ui.elements.button.directionX[i].addEventListener('click', function (evt) {
+					evt.stopPropagation();
+					
+					_m.clearScreen();
+					
+					if (this.classList.contains('buttonActive')) {
+						_m.direction.setY('none');
+					
+						for (var e = 0; e < _m.ui.elements.button.directionY.length; e++) {
+							if (_m.ui.elements.button.directionY[e].classList.contains('buttonActive')) {
+								_m.ui.toggle.button.generic(_m.ui.elements.button.directionY[e], 'directionY');
+							}
+						}
+					}
+					
+					_m.direction.setX(this.getAttribute('data-direction'));
+					
+					_m.ui.activate.button(this, 'directionX');
+					
+					_m.init();
+				});
+			}
+			
+			for (var i = 0; i < _m.ui.elements.button.directionY.length; i++) {
+				_m.ui.elements.button.directionY[i].addEventListener('click', function (evt) {
+					evt.stopPropagation();
+					
+					_m.clearScreen();
+					
+					if (this.classList.contains('buttonActive')) {
+						_m.direction.setX('none');
+						
+						for (var e = 0; e < _m.ui.elements.button.directionX.length; e++) {
+							if (_m.ui.elements.button.directionX[e].classList.contains('buttonActive')) {
+								_m.ui.toggle.button.generic(_m.ui.elements.button.directionX[e], 'directionX');
+							}
+						}
+					}
+					
+					_m.direction.setY(this.getAttribute('data-direction'));
+					
+					_m.ui.activate.button(this, 'directionY');
+					
+					_m.init();
+				});
+			}
+			
+			//setup wave buttons
+			for (var i = 0; i < _m.ui.elements.button.wave.length; i++) {
+				_m.ui.elements.button.wave[i].addEventListener('click', function (evt) {
+					evt.stopPropagation();
+					
+					_m.clearScreen();
+					
+					_m.wave.toggle(this.getAttribute('data-wave'));
+					
+					_m.ui.toggle.button.generic(this);
+					
+					_m.init();
+				});
+			}
+			
+			//setup music player
+			_m.music.player.addEventListener('ended', function () {
+				for (var i = 0; i < _m.ui.elements.button.music.length; i++) {
+					if (_m.ui.elements.button.music[i].classList.contains('buttonActive')) {
+						var index = (i < _m.ui.elements.button.music.length-1 ? i+1 : 0);
+						
+						_m.music.set(_m.ui.elements.button.music[index].getAttribute('data-track'));
+						_m.ui.toggle.button.music(_m.ui.elements.button.music[index]);
+						
+						return;
+					}
+				}
+			});
+			
+			//setup resize callback
+			window.addEventListener('resize', function () {
+				_m.resize();
+			});
+			
+			//start animation
+			_m.init();
+		}
+		
+		new Matrix('matrix');
+	</script>
+</body>
+</html>

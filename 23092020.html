@@ -1,0 +1,981 @@
+﻿<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THMLAND CSS</title>
+<style>
+svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 740px;
+  height: 140px;
+  transform: translate(5%, -50%);
+}
+.path {
+  stroke-dashoffset: 0;
+  stroke-dasharray: 100%;
+  animation: dash 4.5s linear;
+}
+.path:nth-child(10) {
+  animation-delay: -2s;
+}
+.path:nth-child(9) {
+  animation-delay: -1.75s;
+}
+.path:nth-child(8) {
+  animation-delay: -1.5s;
+}
+.path:nth-child(7) {
+  animation-delay: -1.5s;
+}
+.path:nth-child(6) {
+  animation-delay: -1.25s;
+}
+.path:nth-child(5) {
+  animation-delay: -1s;
+}
+.path:nth-child(4) {
+  animation-delay: -0.75s;
+}
+.path:nth-child(3) {
+  animation-delay: -0.5s;
+}
+.path:nth-child(2) {
+  animation-delay: -0.25s;
+}
+
+@keyframes dash {
+  0%,
+  50% {
+    stroke-dashoffset: 100%;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+.sign {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 50%;
+  background-image: radial-gradient(
+    ellipse 50% 35% at 50% 50%,
+    #6b1839,
+    transparent
+  );
+  transform: translate(-50%, -50%);
+  letter-spacing: 2;
+  left: 50%;
+  top: 50%;
+  font-family: "Clip";
+  text-transform: uppercase;
+  font-size: 6em;
+  color: #ffe6ff;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+    -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+    0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  animation: shine 2s forwards, flicker 3s infinite;
+}
+
+@keyframes blink {
+  0%,
+  22%,
+  36%,
+  75% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+      -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+      0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  }
+  28%,
+  33% {
+    color: #ff65bd;
+    text-shadow: none;
+  }
+  82%,
+  97% {
+    color: #ff2483;
+    text-shadow: none;
+  }
+}
+
+.flicker {
+  animation: shine 2s forwards, blink 3s 2s infinite;
+}
+
+.fast-flicker {
+  animation: shine 2s forwards, blink 10s 1s infinite;
+}
+
+@keyframes shine {
+  0% {
+    color: #6b1839;
+    text-shadow: none;
+  }
+  100% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+      -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+      0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  }
+}
+
+@keyframes flicker {
+  from {
+    opacity: 1;
+  }
+
+  4% {
+    opacity: 0.9;
+  }
+
+  6% {
+    opacity: 0.85;
+  }
+
+  8% {
+    opacity: 0.95;
+  }
+
+  10% {
+    opacity: 0.9;
+  }
+
+  11% {
+    opacity: 0.922;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  14% {
+    opacity: 0.95;
+  }
+
+  16% {
+    opacity: 0.98;
+  }
+
+  17% {
+    opacity: 0.9;
+  }
+
+  19% {
+    opacity: 0.93;
+  }
+
+  20% {
+    opacity: 0.99;
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  26% {
+    opacity: 0.94;
+  }
+
+  28% {
+    opacity: 0.98;
+  }
+
+  37% {
+    opacity: 0.93;
+  }
+
+  38% {
+    opacity: 0.5;
+  }
+
+  39% {
+    opacity: 0.96;
+  }
+
+  42% {
+    opacity: 1;
+  }
+
+  44% {
+    opacity: 0.97;
+  }
+
+  46% {
+    opacity: 0.94;
+  }
+
+  56% {
+    opacity: 0.9;
+  }
+
+  58% {
+    opacity: 0.9;
+  }
+
+  60% {
+    opacity: 0.99;
+  }
+
+  68% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.9;
+  }
+
+  72% {
+    opacity: 0.95;
+  }
+
+  93% {
+    opacity: 0.93;
+  }
+
+  95% {
+    opacity: 0.95;
+  }
+
+  97% {
+    opacity: 0.93;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+//function + mixin
+@function shadow-string($color1, $color2, $length){
+  $total-length: $length;
+  $string: $color1 0px 0px;
+  @while $length > 0 {
+    $mix-amount: 100 - (($length / $total-length) * 100);
+    $mixed-color: mix($color1,$color2, $mix-amount);
+    $string-addition: $length+px $length+px;
+    $string: $mixed-color $string-addition, $string;
+    $length: $length - 1;  
+  }
+  @return $string
+}
+
+@mixin longshadow($color1, $color2, $length) {  
+  text-shadow: shadow-string($color1, $color2, $length);    
+}
+
+//color vars
+$color-bg:#FFEA80;
+$color-title:#FFFFD9;
+$color-line-1:#FF6138;
+$color-line-2:#FFB400;
+$color-line-3:#00A388;
+$color-line-4:#005AB3;
+$color-line-5:#8100FF;
+
+//styling
+body{
+  padding:2rem;
+  text-align:center;
+  background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+  letter-spacing:.08em;
+  line-height:1.4;
+}
+
+.title{
+  font-size:7vw;
+  .title-part{
+    font-weight: 600;
+    font-family:'Fredoka One', sans-serif;
+    text-transform:uppercase;
+    display:block;
+    color:$color-title;
+    &.line-1{
+      @include longshadow($color-line-1, $color-bg, 120);
+    }
+    &.line-2{
+      @include longshadow($color-line-2, $color-bg, 60);
+    }
+    &.line-3{
+      @include longshadow($color-line-3, $color-bg, 100);
+    }  
+    &.line-4{
+      @include longshadow($color-line-4, $color-bg, 100);
+    }  
+    &.line-5{
+      @include longshadow($color-line-5, $color-bg, 100);
+    }   
+  }
+}
+body {
+  margin: 0.2;
+  font-family: "Times New Roman",Khmer OS Content, serif;
+}
+.Opacity{
+	Opacity: 0.2;
+	}
+.topnav {
+  overflow: hidden;
+  background: rgba(0,220,0,0.50);
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.topnav a:hover {
+   Opacity: 0.4;
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+color: brown;
+border=0.5;
+}
+.head {
+	background-image: url("1.png");
+	background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+	grid-template-columns: auto auto auto;
+	color:  Green;
+	background-ridius: 10px;
+	text-shadow: 5px 5px 20px  yellow;
+	font-size: 30px;
+	
+
+}
+.thon {
+ font-size: 20px;
+color:white;
+background: rgba(114, 149, 107,0.40); 
+border-radius: 7px;
+font-family: "Times New Roman",Khmer OS Content, serif;
+}
+
+body{
+	
+	background-image: url("#1.png" align="center");
+	background-color: lightblue;
+	Operacy: 0.3;
+}
+p{
+	color: black;
+}
+.newspaper {
+  column-count: 2;
+  column-gap: 40px;
+  column-rule: 4px double #ff00ff;
+font-family: "Times New Roman",Khmer OS Content, serif align: justify;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}	
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: rgba(0,128,0,0.2);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px ;
+  z-index: 1;
+}
+#customers {
+  font-family: "Times New Roman",Khmer OS Content, serif align: justify;
+  border-collapse: collapse;
+
+  width: 50%;
+}
+
+#customers td, #customers th {
+text-align: center;
+  border: 4px ridge lightgray;
+  padding: 4px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;
+text-align: center;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+}
+img {
+  border-radius: 8px;
+}
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
+body {
+  background-color: #;
+}
+
+#clock {
+  font-family: 'Orbitron', sans-serif;
+  color: #66ff99;
+  font-size: 56px;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+console.clear();
+
+var s = Snap();
+var sMaxX = 800;
+var sMaxY = 600;
+var viewBoxList = [0, 0, sMaxX, sMaxY];
+s.attr({
+    viewBox: viewBoxList
+});
+
+var gLines = s.g();
+var gText = s.g();
+var patt;
+var maskObj;
+var text;
+var maskElem = s.mask();
+
+var pSize = 700;
+var maxLines = 16;
+var maxLinesDouble = maxLines * 2;
+var lineStep = pSize / maxLines;
+var lines = [];
+var pathDur = 1000;
+var delay = 250;
+
+var colorSteps = maxLines / 2;
+var colors = ['purple',
+              'crimson',
+              'orangered',
+              'orange',
+              'gold',
+              'yellowgreen',
+              'steelblue',
+              'teal',
+              'purple',
+              'purple',
+              'orange',
+              'gold',
+             ]
+
+var lineLength = Math.sqrt( Math.pow( pSize, 2 ) * 2);
+
+
+var lineObj = function () {
+    var d = 'M' + [pSize, 0, 0, pSize];
+    var path = s.path(d);
+    var pos = 0;
+    var addMask = false;
+    var pathDelay = 0;
+    var dashArray = 0;
+    var strokeW = 0;
+    
+    this.init = function ( params ) {
+        pos = params.pos;
+        strokeW = params.strokeW;
+        var strokeColor = params.color || 'hotpink'
+        var offsetX = params.offsetX || 0;
+        var x = pSize - lineStep * (pos + .5) + offsetX;
+        var translateParams = [x, 0];
+        
+        pathDelay = params.delay || delay;
+        dashArray = lineLength;
+        addMask = params.addMask || false;
+
+        path.attr({
+            transform: 'translate(' + translateParams + ')',
+            'stroke-width': strokeW,
+            stroke: strokeColor,
+            'stroke-linecap': 'square',
+            'stroke-dashoffset': lineLength,
+            'stroke-dasharray': dashArray
+        });
+        
+        gLines.add(path);
+        
+    }// Init
+    
+    this.reset = function () {
+        path.attr({
+            'stroke-dashoffset': lineLength,
+            'stroke-dasharray': dashArray
+        });
+    }
+    
+    this.animdDelay = function() {
+        setTimeout(pathAnim, 
+                   (maxLinesDouble - pos) * pathDelay
+                  );
+    }
+    
+    var countNextAnim = 0;
+    
+    function runNextAnim() {
+        if ( addMask == true ) {
+            // Why 0?
+            if ( pos == 0) {
+                countNextAnim++;
+                
+                maskObj.maskAnim();
+            }
+        }
+    }
+    
+    function pathAnim () {
+
+        path.animate({
+            'stroke-dashoffset': '0'
+        	},
+			pathDur,
+			runNextAnim
+            );
+    }
+    
+}// lineObj
+
+// ------------------------------------
+
+function createLines( params ) {
+    
+    var strokeW = params.strokeW;
+    
+    for ( var i = 0; i < maxLinesDouble; i++ ) {
+        var line = new lineObj;
+        var color = params.color || colors[i % colorSteps];
+        
+        line.init({
+            pos: i,
+            strokeW: params.strokeW,
+            offsetX: params.offsetX,
+            delay: params.delay,
+            addMask: params.addMask || false,
+            color: color,
+        });
+        
+        lines.push(line);
+    }
+}
+
+// ------------------------------------
+
+function createPattern() {
+    
+//     console.log('* - createPattern');
+    
+    var rect = s.rect(0,0, pSize, pSize);
+    rect.attr({
+        fill: 'white',
+    });
+    
+    gLines.add(rect);
+    
+    createLines({
+        strokeW: lineStep / 1.4,
+        addMask: false
+        });
+    
+    createLines({
+        strokeW: 2,
+        color: '#002',
+        offsetX: lineStep / 2 + 7,
+        delay: 300,
+        addMask: true
+    	});
+    
+  patt = gLines.toPattern(0,0, pSize, pSize);    
+    
+}
+
+function animatePattern() {
+  
+    for ( var i = 0; i < lines.length; i++ ) {
+        var line = lines[i];
+        
+        line.reset();
+        line.animdDelay();
+    }
+}
+
+// ------------------------------------
+
+var textObj = function () {
+    
+    var textDur = 1500;
+    var dashoffset = 1200;
+    var textGInit = s.g();
+        var text1 = s.text('50%','34%','SEY');
+        var text2 = s.text('50%','73%','THON');
+
+    text1.attr({
+       dy: '.3em',
+       'font-size': '1.15em'
+    });
+    text2.attr({
+       dy: '.3em'
+    });
+    
+    textGInit.add(text1, text2);
+
+    textGInit.attr({
+        'text-anchor': 'middle',
+        'font': '15em/1 Impact',
+        fill: 'white',
+        stroke: '#000',
+        'stroke-width': 3,
+        'stroke-dasharray': dashoffset,
+        'stroke-dashoffset': dashoffset
+    });
+
+    var textGFill = textGInit.clone();
+
+    textGInit.attr({
+        transform: 'translate(10,10)'
+    });
+    
+    gText.add(textGInit, textGFill);
+    
+    this.textAnim = function () {
+        textGFill.animate({
+            'stroke-dashoffset': 0
+	        },
+            textDur,
+            setTextStroke);
+    }
+    
+    function setTextStroke () {
+        setTextFill();
+        
+        textGInit.animate({
+            'stroke-dashoffset': 0
+            },
+            textDur
+            );
+    }
+    
+    function setTextFill () {
+        
+        animatePattern();
+        
+        textGFill.attr({
+            fill: patt
+        });
+    }
+    
+    this.reset = function () {
+        
+        var initState = {
+            fill: 'white',
+            'stroke-dasharray': dashoffset,
+            'stroke-dashoffset': dashoffset
+        };
+        
+        textGInit.attr( initState );
+        textGFill.attr( initState );
+        
+        this.textAnim();
+    }
+}
+
+// ------------------------------------
+
+function createText() {
+//     console.log('* - createText');
+    text = new textObj;
+    text.textAnim();
+}
+
+// ------------------------------------
+
+var maskObjInit = function () {
+    var maskShape;
+    
+    var currentStep = 0;
+    var steps = [
+        {rx: '10%', ry: "10%"},
+        {rx: '35%', ry: "35%"},
+        {rx: '0%', ry: "0%"}
+    ];
+    
+    this.init = function () {
+        maskShape = s.ellipse('50%', '50%', '100%', '100%');
+    
+        maskShape.attr({
+            fill: "white"
+        });
+
+        maskElem.add(maskShape);
+
+        gText.attr({
+            mask: maskElem
+        });
+    }
+    
+    this.maskAnim = function () {
+//         console.log('- * - anim mask');
+        
+        if ( currentStep == steps.length ) {
+            setTimeout(reRun, 1000);
+            return;
+        }
+        
+        maskShape.animate(
+            steps[currentStep]
+            ,
+            300,
+            maskObj.maskAnim);
+        currentStep++;
+    }
+    
+    this.reset = function () {
+        currentStep = 0;
+        
+        var initState = {
+            rx: '100%', 
+            ry: "100%"
+        };
+        
+        maskShape.attr(initState);
+    }
+}
+
+function createMask() {
+//     console.log('* - createMask');
+    maskObj = new maskObjInit;
+    maskObj.init();
+}
+
+// ------------------------------------
+
+createPattern();
+createText();
+createMask();
+
+function reRun() {
+    
+    maskObj.reset();
+    text.reset();
+}
+<BR><BR><BR>
+
+/*var wrapper = document.createElement("div");
+document.body.appendChild(wrapper);
+wrapper.appendChild(s.node);*/
+BODY {
+    height: 100%;
+    min-height: 100%;
+    }
+svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    }
+</style>
+</head>
+<body>
+
+<svg viewBox="0 0 74 14">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-9.000000, -7.000000)">
+            <g id="Group-2" transform="translate(9.000000, 7.000000)">
+                <rect id="Rectangle" fill="#020202" x="0" y="0" width="74" height="14" rx="4"></rect>
+                <g id="Group" transform="translate(4.000000, 3.500000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path class="path" d="M62,6.5 L62,0.5 L64,0.5 C65.1045695,0.5 66,1.3954305 66,2.5 C66,3.6045695 65.1045695,4.5 64,4.5 L62,4.5 L62,4.5 L64,4.5 L66,6.5" id="r" stroke="#D8A7CD"></path>
+                    <path class="path" d="M54,6.5 L54,2.5 C54,1.3954305 54.8954305,0.5 56,0.5 C57.1045695,0.5 58,1.3954305 58,2.5 L58,6.5 L58,6.5 L58,4.5 L54,4.5" id="a2" stroke="#FEB4BE"></path>
+                    <polyline class="path" id="t" stroke="#FFA685" points="51 0.5 47 0.5 49 0.5 49 6.5"></polyline>
+                    <polyline class="path" id="l" stroke="#FFD59E" points="42 0.5 42 6.5 45 6.5"></polyline>
+                    <path class="path" d="M36,0.5 C37.1045695,0.5 38,1.3954305 38,2.5 L38,4.5 C38,5.6045695 37.1045695,6.5 36,6.5 C34.8954305,6.5 34,5.6045695 34,4.5 L34,2.5 C34,1.3954305 34.8954305,0.5 36,0.5 Z" id="o" stroke="#9BDACA"></path>
+                    <polyline class="path" id="v" stroke="#D8A7CD" points="26 0.5 28 6.5 30 0.5"></polyline>
+                    <path class="path" d="M18,6.5 L22,0.5" id="x2" stroke="#FEB4BE"></path>
+                    <path class="path" d="M18,0.5 L22,6.5" id="x1" stroke="#FEB4BE"></path>
+                    <path class="path" d="M10,6.5 L10,2.5 C10,1.3954305 10.8954305,0.5 12,0.5 C13.1045695,0.5 14,1.3954305 14,2.5 L14,6.5 L14,6.5 L14,4.5 L10,4.5" id="a" stroke="#FFA685"></path>
+                    <polyline class="path" id="m" stroke="#FFD59E" transform="translate(3.000000, 3.500000) scale(-1, 1) translate(-3.000000, -3.500000) " points="6 6.5 6 0.5 3 3.5 3.66373598e-15 0.5 3.66373598e-15 6.5"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+  </svg>
+
+<div class="head">
+<h1 align="center"><div id="clock"></div> </h1>
+<div class="Opacity">
+<marquee behavior="alternate width="100%">
+<img src=logo.jpg hight="100%" width="13%" align="bottom-center">
+</marquee>
+<marquee direction="right">
+<div class="frame">
+<img src=1.jpg hight="100%" width="13%" align="center">
+</div>
+</marquee>
+</div>
+</div>
+<div class="topnav";>
+ 	<a class="active" href="https://www.facebook.com/Thinboys">ហ្វេសប៊ុក</a>
+  	<a class="active" href="https://www.youtube.com/">យូធូប</a>
+  	<a class="active" href="https://#www.youtube.com/">អំពីយើង</a>
+	<a class="active" href="https://#www.youtube.com/">ស្វែងរកការងារ</a>
+  	<a class="active" href="https://#www.youtube.com/">ពត៌មានក្នុងស្រុក</a>
+  	<a class="active" href="https://#www.youtube.com/">ឯកសារសត្វ</a>
+  	<a class="active" href="https://#www.youtube.com/">ការស្រាវជ្រាវ</a>
+	<a class="active" href="https://#www.youtube.com/">អាយធី(IT)</a>
+ 	<a class="active" href="https://#www.youtube.com/">វិទ្យាសាស្រ្ដ</a>
+  	<a class="active" href="https://#www.youtube.com/">ប្រវត្តសាស្រ្ដ</a>
+ 	 <a class="active" href="https:/#/www.youtube.com/">ពីនេះពីនោះ</a>
+</div>
+</div>
+<img src="logo.png" high="0.5px" width="0.5px" align="top-left" >
+<p align="Justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To day I want to make myself to learn html and css. Fristly, we would like to say thank you for your kindly support us. According to our last checking between <em><b>Minebea</b></em> and 						
+Many countries, particularly those whose economies have more fully integrated computing and telecommunications technologies, are struggling to develop laws and rules 
+for dealing with computer crimes. We will cover selected U.S. federal computer-crime 
+laws in order to provide a sample of these many initiatives; a great deal of detail regarding these laws is omitted and numerous laws are not covered. This chapter is not intended to provide a thorough treatment of each of these laws, or to cover any more than 
+the tip of the iceberg of the many U.S. technology laws. Instead, it is meant to raise 
+awareness of the importance of considering these laws in your work and activities as an 
+information security professional. That in no way means that the rest of the world is allowing attackers to run free and wild. With just a finite number of pages, we cannot 
+properly cover all legal systems in the world or all of the relevant laws in the United 
+States. It is important that you spend the time necessary to fully understand the laws that 
+are relevant to your specific location and activities in the information security area.									
+
+<div class="newspaper">
+<p align="Justify">&nbsp&nbsp&nbsp&nbsp An interesting aspect of the hacker community is that it is changing. Over the last 
+few years, their motivation has changed from just the thrill of figuring out how to exploit vulnerabilities to figuring out how to make revenue from their actions and getting Many countries, particularly those whose economies have more fully integrated computing and telecommunications technologies, are struggling to develop laws and rules 
+for dealing with computer crimes. We will cover selected U.S. federal computer-crime 
+laws in order to provide a sample of these many initiatives; a great deal of detail regarding these laws is omitted and numerous laws are not covered. This chapter is not intended to provide a thorough treatment of each of these laws, or to cover any more than 
+the tip of the iceberg of the many U.S. technology laws. Instead, it is meant to raise 
+awareness of the importance of considering these laws in your work and activities as an 
+information security professional. That in no way means that the rest of the world is allowing attackers to run free and wild. With just a finite number of pages, we cannot 
+properly cover all legal systems in the world or all of the relevant laws in the United 
+States. It is important that you spend the time necessary to fully understand the laws that 
+are relevant to your specific location and activities in the information security area
+paid for their skills. Hackers who were out to “have fun” without any real target in mind 
+have, to a great extent, been replaced by people who are serious about gaining financial 
+benefits from their activities. Attacks are not only getting more specific, but also increasing in sophistication. The following are just a few examples of this type of trend</p>
+
+<p align="justify">&nbsp&nbsp&nbsp&nbsp An interesting aspect of the DMCA is that there does not need to be an infringement 
+of the work that is protected by the copyright law for prosecution under law to take 
+place. So, if someone attempts to reverse-engineer some type of control and does nothing with the actual content, that person can still be prosecuted under this law. The 
+DMCA, like the CFAA and the Access Device Statute, is directed at curbing unauthorized 
+access itself, not at protecting the underlying work, which falls under the protection of 
+copyright law. If an individual circumvents the access control on an e-book andthen
+shares this material with others in an unauthorized way, she has broken the copyright 
+law and DMCA. Two for the price of one.</p>
+</div>
+
+</p>
+<table id="customers"​ align="center">
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>កម្ពុជា</td>
+  </tr>
+  <tr>
+    <td>Berglunds snabbköp</td>
+    <td>Christina Berglund</td>
+    <td>ថៃ</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>ទ្បាវ</td>
+  </tr>
+  <tr>
+    <td>Ernst Handel</td>
+    <td>Roland Mendel</td>
+    <td>ចិន</td>
+  </tr>
+  <tr>
+    <td>Island Trading</td>
+    <td>Helen Bennett</td>
+    <td>វៀតណាម</td>
+  </tr>
+  <tr>
+    <td>Königlich Essen</td>
+    <td>Philip Cramer</td>
+    <td>មីយ៉ាន់ម៉ា</td>
+  </tr>
+  <tr>
+    <td>Laughing Bacchus Winecellars</td>
+    <td>Yoshi Tannamuri</td>
+    <td>កាណាដា</td>
+  </tr>
+  <tr>
+    <td>Magazzini Alimentari Riuniti</td>
+    <td>Giovanni Rovelli</td>
+    <td>អ៊ីតាលី</td>
+  </tr>
+  <tr>
+    <td>North/South</td>
+    <td>Simon Crowther</td>
+    <td>ចក្រភពអង់គ្លេស</td>
+  </tr>
+  <tr>
+    <td>Paris spécialités</td>
+    <td>Marie Bertrand</td>
+    <td>បារាំង</td>
+  </tr>
+</table>
+<br><br><br><br><br><br>
+<div class="content">
+ <h1 class="title">
+    <span class="title-part line-1">Variable</span>
+    <span class="title-part line-2">Spread</span>
+    <span class="title-part line-3">Long Shadows</span>
+    <span class="title-part line-4">With</span>
+    <span class="title-part line-5">Gradients</span>
+  </h1>
+</div>
+<link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="sign">
+      <span class="fast-flicker">b</span>rea<span class="flicker">t</span>he
+    </div>
+<div  class="thon">
+<marquee behavior="alternate">ទំនាក់ទំនងផ្សាយពាណិជ្ចកម្មតាមរយៈលេខ៖ <b color:blue>០៩៧​ ៦៣ ២៧ ៧៧១០ ឬ អ៊ីម៉ែល thunsey577@gmail.com &nbsp;&nbsp;&nbsp;សូមអរគុណ
+</b> 
+</marquee>
+<script>
+function currentTime() {
+  var date = new Date(); /* creating object of Date class */
+  var hour = date.getHours();
+  var min = date.getMinutes();
+  var sec = date.getSeconds();
+  hour = updateTime(hour);
+  min = updateTime(min);
+  sec = updateTime(sec);
+  document.getElementById("clock").innerText = hour + " : " + min + " : " + sec; /* adding time to the div */
+  var t = setTimeout(function(){ currentTime() }, 1000); /* setting timer */
+}
+
+function updateTime(k) {
+  if (k < 10) {
+    return "0" + k;
+  }
+  else {
+    return k;
+  }
+}
+
+currentTime(); /* calling currentTime() function to initiate the process */
+</script>
+</body>
+</html>
