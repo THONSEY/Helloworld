@@ -1,0 +1,199 @@
+h1, body {
+   text-align: center;
+   font-style: oblique;
+   font-family: Georgia, 'khmer os battambang', Times, serif;
+   Color: rgb(4, 7, 201);
+}
+
+#box1 {
+   margin: 20px;
+   padding: 10px;
+   border: 3px solid red;
+   width: 200px;
+   height: 200px;
+   text-align: left;
+   float: left;
+   background-image: url("1.jpg");
+   background-size: cover;
+   background-position: center;
+   mask-image: url("1.jpg");
+   mask-size: content;
+   border-radius: 7px;
+}
+
+#box2 {
+   margin: 20px;
+   padding: 10px;
+   border: 3px solid red;
+   width: 200px;
+   height: 200px;
+   text-align: left;
+   float: left;
+   background-image: url("6.jpg");
+   background-size: cover;
+   background-position: center;
+   mask-image: url("6.jpg");
+   mask-size: content;
+   border-radius: 7px;
+}
+
+#box3 {
+   margin: 20px;
+   padding: 10px;
+   border: 3px solid red;
+   width: 200px;
+   height: 200px;
+   text-align: left;
+   float: left;
+   background-image: url("14.jpg");
+   background-size: cover;
+   background-position: center;
+   mask-image: url("14.jpg");
+   mask-size: content;
+   border-radius: 7px;
+}
+
+#box4 {
+   margin: 20px;
+   padding: 10px;
+   border: 3px solid red;
+   width: 200px;
+   height: 200px;
+   text-align: left;
+   float: left;
+   background-image: url("11.jpg");
+   background-size: cover;
+   background-position: center;
+   mask-image: url("11.jpg");
+   mask-size: content;
+   border-radius: 7px;
+}
+
+#box5 {
+   margin: 20px;
+   padding: 10px;
+   border: 3px solid red;
+   width: 200px;
+   height: 200px;
+   text-align: left;
+   float: left;
+   background-image: url("4.jpg");
+   background-size: cover;
+   background-position: center;
+   mask-image: url("4.jpg");
+   mask-size: content;
+   border-radius: 7px;
+}
+
+#box6 {
+   margin: 20px;
+   padding: 10px;
+   border: 3px solid red;
+   width: 200px;
+   height: 200px;
+   text-align: left;
+   float: left;
+   background-image: url("5.jpg");
+   background-size: cover;
+   background-position: center;
+   mask-image: url("5.jpg");
+   mask-size: content;
+   border-radius: 7px;
+}
+
+#box7 {
+   margin: 20px;
+   padding: 10px;
+   border: 3px solid red;
+   width: 200px;
+   height: 200px;
+   text-align: left;
+   float: left;
+   background-image: url("7.jpg");
+   background-size: cover;
+   background-position: center;
+   mask-image: url("7.jpg");
+   mask-size: content;
+   border-radius: 7px;
+}
+
+#box8 {
+   margin: 20px;
+   padding: 10px;
+   border: 3px solid red;
+   width: 200px;
+   height: 200px;
+   text-align: left;
+   float: left;
+   background-image: url("8.jpg");
+   background-size: cover;
+   background-position: center;
+   mask-image: url("8.jpg");
+   mask-size: content;
+   border-radius: 7px;
+}
+
+#box9 {
+   margin: 20px;
+   padding: 10px;
+   border: 3px solid red;
+   width: 200px;
+   height: 200px;
+   text-align: left;
+   float: left;
+   background-image: url("9.jpg");
+   background-size: cover;
+   background-position: center;
+   mask-image: url("9.jpg");
+   mask-size: content;
+   border-radius: 7px;
+}
+
+#box10 {
+   margin: 20px;
+   padding: 10px;
+   border: 3px solid red;
+   width: 200px;
+   height: 200px;
+   text-align: left;
+   float: left;
+   background-image: url("thon.jpg");
+   background-size: cover;
+   background-position: center;
+   mask-image: url("thon.jpg");
+   mask-size: content;
+   border-radius: 7px;
+}
+
+#box11 {
+   margin: 20px;
+   padding: 10px;
+   border: 3px solid red;
+   width: 200px;
+   height: 200px;
+   text-align: left;
+   float: left;
+   background-image: url("Angkorwat.jpg");
+   background-size: cover;
+   background-position: center;
+   mask-image: url("Angkorwat.jpg");
+   mask-size: content;
+   border-radius: 7px;
+}
+
+#box12 {
+   margin: 20px;
+   padding: 10px;
+   border: 3px solid red;
+   width: 200px;
+   height: 200px;
+   text-align: left;
+   float: left;
+   background-image: url("IMG20200901155516.jpg");
+   background-size: cover;
+   background-position: center;
+   mask-image: url("IMG20200901155516.jpg");
+   mask-size: content;
+   border-radius: 7px;
+   overflow: hidden;
+}

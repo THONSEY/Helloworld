@@ -1,5 +1,6 @@
 {
    "window.autoDetectColorScheme": true,
    "workbench.commandPalette.preserveInput": true,
-   "editor.formatOnSave": true
+   "editor.formatOnSave": true,
+   "C_Cpp.errorSquiggles": "Enabled"
 }

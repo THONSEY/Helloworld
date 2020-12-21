@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      .Wrap{
+         height: 59px;
+         width:100px;
+         border: 1px solid blue;
+         text-align:center;
+      }
+      .Wrap:before{
+         content:"";
+         display: inline-block;
+         height:100px;
+         vertical-align: middle;
+         width:1px;
+      }
+      img{vertical-align: middle;}
+   </style>
+</head>
+<body>
+   <div class="Wrap">
+      <img src="http://lorempixel.com/400/200/">
+   </div>
+</body>
+</html>

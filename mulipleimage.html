@@ -3,34 +3,44 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>MultipleBackground</title>
+   <title>MultipleImage</title>
    <style>
-      .border{
-         font-family:'Times new roman';
-         font-style:italic;
-         font-size:170%;
-         text-align:center;
-         padding:60px;
-         width:350px;
-         height: 500px;
-         background:url(1.jpg) top left no-repeat,
-                    url(11.jpg) top right no-repeat,
-                    url(2.jpg) bottom left no-repeat,
-                    url(9.jpg) bottom right no-repeat,
-                    url(4.jpg) top          repeat-x,
-                    url(3.jpg) bottom        repeat-x,
-                    url(5.jpg) left          repeat-y,
-                    url(10.jpg) right          repeat-y
+      #mydiv
+      {
+         background-image:url(6.jpg),
+                           url(8.jpg),url(7.jpg),url(9.jpg),url(6.jpg);
+         background-position: right bottom, left top,right top;
+         background-repeat: no-repeat,repeat,no-repeat;
+      }
+      p{
+         color:aliceblue
       }
    </style>
 </head>
 <body>
-   <div class="border">
-      <h1>Employee of the month</h1>
-      <h2>Awarded To:</h2>
-      <h3>______Thon_______</h3>
-      <h2>Date:</h2>
-      <h3>___/___/___</h3>
+   <div id="mydiv">
+      <p>
+            With traditional career doors slamming
+            shut, it’s easy to panic, but Chris Guillebeau
+            sees opportunities everywhere. Making a
+            career out of your passion sounds like
+            a dream, but in this straightforward,
+            engaging book he shows you how to
+            get it done, one simple step at a time.”
+            —Alan Paul, author of Big in China
+            More than a decade ago, I began a lifelong
+            journey of self-employment by any means
+            necessary. I never planned to be an entrepreneur; I just didn’t want to work for
+            someone else. From a cheap apartment in
+            Memphis, Tennessee, I watched what other
+            people had done and tried to reverse-engineer their success. I started by importing coffee from Jamaica, selling it
+            online because I
+            saw other people making money from it; I
+            didn’t have any special skills in importing,
+            roasting, or selling. (I did, however, consume
+            much of the product through frequent
+            “testing.”)
+       </p>
    </div>
 </body>
 </html>
