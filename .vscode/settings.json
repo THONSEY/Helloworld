@@ -1,0 +1,8 @@
+{
+    "files.autoSaveDelay": 1,
+    "files.trimTrailingWhitespace": true,
+    "files.autoSave": "afterDelay",
+    "editor.accessibilityPageSize": 16,
+    "editor.find.autoFindInSelection": "always",
+    "editor.cursorBlinking": "phase"
+}
