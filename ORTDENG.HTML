@@ -1,64 +1,57 @@
 <!DOCTYPE html>
 
 <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
+    <style>
+      .card-container {
+        position: relative;
+        width: 50%;
+      }
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+      img {
+        display: block;
+        width: 100%;
+      }
 
-<style>
-.card-container {
-position: relative;
-width: 50%;
-}
+      .overlay {
+        position: absolute;
+        bottom: 100%;
+        background-color: rgb(55, 74, 179);
 
-img {
-display: block;
-width: 100%;
-}
+        overflow: hidden;
+        width: 100%;
+        height: 0;
+        transition: 0.5s ease-in-out;
+      }
 
-.overlay {
-position: absolute;
-bottom: 100%;
-background-color: rgb(55, 74, 179);
+      .card-container:hover .overlay {
+        bottom: 0;
+        height: 100%;
+      }
 
-overflow: hidden;
-width: 100%;
-height: 0;
-transition: .5s ease-in-out;
-}
+      .caption {
+        color: white;
+        font-size: 30px;
+        font-family: "khmer os Muol light";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+      }
+    </style>
+  </head>
 
-.card-container:hover .overlay {
-bottom: 0;
-height: 100%;
-}
+  <body>
+    <h1>Image Overlay Slide Example</h1>
 
-.caption {
-color: white;
-font-size: 30px;
-position: absolute;
-top: 50%;
-left: 50%;
-text-align: center;
-}
+    <div class="card-container">
+      <img src="1.jpg" />
 
-</style>
-
-</head>
-
-<body>
-
-<h1>Image Overlay Slide Example</h1>
-
-<div class="card-container">
-
-<img src="1.jpg">
-
-<div class="overlay">
-
-<div class="caption">ហេមើលធ្វើអ្វី?</div>
-
-</div>
-</div>
-</body>
+      <div class="overlay">
+        <div class="caption">ហេមើលធ្វើអ្វី?ស្រលាញ់ខ្ញុំមែន?</div>
+      </div>
+    </div>
+  </body>
 </html>
